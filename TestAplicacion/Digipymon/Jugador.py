@@ -17,3 +17,18 @@ class Jugador:
     
     def consultar_digipoints(self):
         print(self.digicoins)  
+    
+    def consultar_evolucion(self,nombre_digipymon):
+        contador_digipymon_evo = 0
+        for digipymon in self.lista_digipymon:
+            if digipymon.nombre == nombre_digipymon:
+                contador_digipymon_evo += 1
+            
+        if contador_digipymon_evo == 2:
+            print(f"{self.nombre_digipymon} puede evolucionar")
+            return True
+        else:
+            print(f"{self.nombre_digipymon} no puede evolucionar")
+            return False
+        
+        
