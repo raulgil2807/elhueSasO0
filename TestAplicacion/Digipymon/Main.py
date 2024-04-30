@@ -12,8 +12,10 @@ from Digipymon import Digipymon
 from os import system
 
 
+## Esta función principal como es el main abarca todo el proceso del Videojuego
 def main():
     print("")
+
     print("Bienvenido a Digipymon!! Podrás hacerte con todos?!")
     time.sleep(0.5)
     print("")
@@ -27,6 +29,7 @@ def main():
     bucle = True
     while bucle:
         print("")
+        ## Creamos una variable opcion_menu en el cual vamos a igualar o llamar a la función menú que hemos creado. Y colocamos todas las opcione que vayamos a crear.
         opcion_menu = menu()
         if opcion_menu == 7:
             print("¡Hasta luego!")
@@ -35,6 +38,7 @@ def main():
             system("cls")
             bucle_bacano = True
             while bucle_bacano:
+                ## Creamos una variable opcion_mundos en el cual vamos a igualar o llamar a la función mundos que hemos creado
                 opcion_mundos = mundos()
                 if opcion_mundos == 1:
                     system("cls")
@@ -44,12 +48,15 @@ def main():
                     print("")
                     captura = str(input("Quieres intentar capturarlo? (y/n): "))
                     print("")
+
+                    ## Creamos un objeto cuantas_digipyball en el cual vamos a igualarlo para obtener del inventario nuestra lista de objetos en este caso las Digipyballs.
                     cuantas_digipyballs = inventario1.objetos.get("Digipyball")
                     if captura == "y" or captura == "Y":
                         if cuantas_digipyballs > 0 and jugador1.cantidad_digipymon < 6:
                             bucle1 = True
                             while bucle1:
                                 cuantas_digipyballs = inventario1.objetos.get("Digipyball")
+                                ## 
                                 aleatorio = random.randint(1, 100)
                                 inventario1.usar_objeto("Digipyball")
                                 if aleatorio > 0 and aleatorio <= probabilidad :
