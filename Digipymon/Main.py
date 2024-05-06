@@ -31,16 +31,17 @@ def main():
         print("")
         ## Creamos una variable opcion_menu en el cual vamos a igualar o llamar a la función menú que hemos creado. Y colocamos todas las opcione que vayamos a crear.
         opcion_menu = menu()
-        if opcion_menu == 7:
+        if opcion_menu == "7":
             print("¡Hasta luego!")
             bucle = False
-        elif opcion_menu == 1:
+        elif opcion_menu == "1":
             system("cls")
             bucle_bacano = True
             while bucle_bacano:
-                ## Creamos una variable opcion_mundos en el cual vamos a igualar o llamar a la función mundos que hemos creado
+                ## Creamos una variable opcion_mundos en el cual vamos a igualar o llamar a la función mundos que hemos creado.
+                ## 
                 opcion_mundos = mundos()
-                if opcion_mundos == 1:
+                if opcion_mundos == "1":
                     system("cls")
                     digipymon1 = buscar_digipymon(jugador1,inventario1)  
                     probabilidad = 100 - (digipymon1.nivel * 10)
@@ -93,7 +94,7 @@ def main():
                     else:
                         print("Opción inválida. Intente de nuevo.")
                         print("")
-                elif opcion_mundos==2:
+                elif opcion_mundos=="2":
                     system("cls")
                     print(".")
                     time.sleep(0.3)
@@ -106,7 +107,7 @@ def main():
                     print("")
                     print("WOOW HA APARECIDO UN DIGIPYMON EVOLUCIONADO DE FUEGO!!")
                     print("")
-                
+                ## Aquí estamos calculando la probabilidad de captura del digipymon.
                     digipymon1 = buscar_digipymon_evo_Fuego(jugador1,inventario1)
                     probabilidad = 100 - (digipymon1.nivel * 10)
                     print("La probabilidad de captura de este" , str(digipymon1.nombre) ,"es :", str(probabilidad),"%")
@@ -154,7 +155,7 @@ def main():
                         print("Opción inválida. Intente de nuevo.")
                         print("")
     
-                elif opcion_mundos==3:
+                elif opcion_mundos=="3":
                     system("cls")
                     print(".")
                     time.sleep(0.3)
@@ -213,7 +214,7 @@ def main():
                     else:
                         print("Opción inválida. Intente de nuevo.")
                         print("")
-                elif opcion_mundos==4:
+                elif opcion_mundos=="4":
                     system("cls")
                     print(".")
                     time.sleep(0.3)
@@ -275,7 +276,7 @@ def main():
                     else:
                         print("Opción inválida. Intente de nuevo.")
                         print("")
-                elif opcion_mundos==5:
+                elif opcion_mundos=="5":
                     system("cls")
                     print("Saliendo")
                     print(".")
@@ -285,21 +286,21 @@ def main():
                     print(".")
                     time.sleep(0.3)
                     bucle_bacano = False
-                elif opcion_mundos!=1 or opcion_mundos!=2 or opcion_mundos!=3 or opcion_mundos!=4 or opcion_mundos!=5: 
-                    print("Valor que has introducido es incorrecto!!!!")
+                elif opcion_mundos!="1" or opcion_mundos!="2" or opcion_mundos!="3" or opcion_mundos!="4" or opcion_mundos!="5": 
+                    print("El valor que has introducido es incorrecto!!!!")
                     print("")
                 
-        elif opcion_menu == 2:
+        elif opcion_menu == "2":
             system("cls")
             combate(jugador1)
-        elif opcion_menu == 6:
+        elif opcion_menu == "6":
             
             system("cls")
             consultar_digipymons(jugador1)
             opcion2 = str(input("¿Quieres acceder al evolucionador? (Y|N) : "))
             if opcion2 == "Y" or opcion2 == "y":
                 nombre_digipymon1 = str(input("Introduce el nombre del digipymon : "))
-                evolucionar_conchesumare(jugador1,nombre_digipymon1)
+                evolucionar_bicho(jugador1,nombre_digipymon1)
             elif opcion2 == "N" or opcion2 == "n":
                 system("cls")
                 print("Saliendo")
@@ -309,13 +310,13 @@ def main():
                 print("")
                 print("Opción Incorrecta!! Vuelva a intentarlo")
 
-        elif opcion_menu == 3:
+        elif opcion_menu == "3":
             system("cls")
             digishop_completo(jugador1,inventario1)
-        elif opcion_menu == 5:
+        elif opcion_menu == "5":
             system("cls")
             inventario1.mostrar_objetos()
-        elif opcion_menu == 4:
+        elif opcion_menu == "4":
             system("cls")
             inventario1.mostrar_objetos()
             bucle7 = True
@@ -343,6 +344,9 @@ def main():
                         elif cualquiere > len(jugador1.lista_digipymon):
                             print("No tienes ningún digipymon con ese número")
                             print("")
+                        else:
+                            print("Opción inválida")
+                            print("")
                     elif opcion_usar == "P" and inventario1.objetos["Poción Curativa"] != 0 or opcion_usar == "p" and inventario1.objetos["Poción Curativa"] != 0:
                         consultar_digipymons(jugador1)
                         cualquiere2 = int(input("¿A qué número de digipymon quieres curar? : "))
@@ -363,6 +367,9 @@ def main():
                             print(digipymon_elegido)
                         elif cualquiere2 > len(jugador1.lista_digipymon):
                             print("No tienes ningún digipymon con ese número")
+                            print("")
+                        else:
+                            print("Opción inválida")
                             print("")
                     elif opcion_usar =="s" or opcion_usar == "S":
                         print("Saliendo del inventario")
@@ -405,17 +412,20 @@ def main():
                     time.sleep(0.3)
                     print(".")
                     bucle7 = False
-            
+        else: 
+            print("Opción inválida. Intente de nuevo.")
+            print("")
+## sse crea la función mundos donde vamos a tener un menú para capturar digipymons según zonas donde habitan.
 def mundos():
     print("1.  Buscar digipymon aleatorio    (  Principiante  )     ****")
     print("2.  Visitar Isla Volcán           (  Experto       )     ****")
     print("3.  Visitar Submarino Profundo    (  Experto       )     ****")
     print("4.  Visitar Flores Malolientes    (  Experto       )     ****")
     print("                                     5. Salir            ****")
-    opcion = int(input("Ingrese una opcion: "))
+    opcion = str(input("Ingrese una opcion: "))
     print("")
     return opcion
-
+## 
 def generar_digipymon_aleatorio():
     vida = random.randint(10, 20)
     ataque = random.randint(1,10)
@@ -427,6 +437,7 @@ def generar_digipymon_aleatorio():
     digipymon = Digipymon(nombre, vida, ataque,tipo, nivel)
     return digipymon
 
+##
 def generar_digipymon_Evo_Fuego():
     vida = random.randint(30, 80)
     ataque = random.randint(20,100)
@@ -438,6 +449,7 @@ def generar_digipymon_Evo_Fuego():
     nombre = lista.obtener_nombre_digipymon_evolucionado(numero_aletorio)
     digipymon_evo_Fuego = Digipymon(nombre, vida, ataque,tipo, nivel)
     return digipymon_evo_Fuego
+##
 def generar_digipymon_Evo_Agua():
     vida = random.randint(30, 80)
     ataque = random.randint(20,100)
@@ -449,7 +461,7 @@ def generar_digipymon_Evo_Agua():
     nombre = lista.obtener_nombre_digipymon_evolucionado(numero_aletorio)
     digipymon_evo_Agua = Digipymon(nombre, vida, ataque,tipo, nivel)
     return digipymon_evo_Agua
-
+##
 def generar_digipymon_Evo_Planta():
     vida = random.randint(30, 80)
     ataque = random.randint(20,100)
@@ -481,7 +493,7 @@ def menu():
     print("7. Salir")
     time.sleep(0.15)
     print("")
-    opcion = int(input("Ingrese una opcion: "))
+    opcion = str(input("Ingrese una opcion: "))
     print("")
     return opcion
 
@@ -605,6 +617,7 @@ def combate(jugador1,):
                     jugador1.digicoins += contador_win 
                     print(f"Tu oro ha aumentado a: {jugador1.digicoins} oros")
             else: 
+                print("")
                 print("No tienes digipymons")
                 bucle2 = False
         elif opcion_combate == "n"  or opcion_combate == "N":
@@ -612,6 +625,11 @@ def combate(jugador1,):
             print("Nos quedamos con uno de oro por tu cobardía")
             jugador1.digicoins -= 1
             bucle2 = False
+        else:
+            print("")
+            print("Ingrese una opcion valida")
+            print("")
+            
             
 def digishop(jugador1):
     print("MOSTRANDO DIGISHOP...")
@@ -628,7 +646,7 @@ def digishop(jugador1):
     print("  4. Salir")
     time.sleep(0.1)
     print("")
-    opcion_tienda = int(input("Ingrese una opcion: "))
+    opcion_tienda = str(input("Ingrese una opcion: "))
     print("")
     return opcion_tienda
     
@@ -646,7 +664,7 @@ def digishop_completo(jugador1,inventario1):
     while bucle3:
         system("cls")
         opcion_tienda = digishop(jugador1)
-        if opcion_tienda == 1:
+        if opcion_tienda == "1":
             if jugador1.digicoins >= 5:
                 print("Has comprado una Digipyball")
                 print("")
@@ -655,7 +673,7 @@ def digishop_completo(jugador1,inventario1):
             else:
                 print("No tienes suficientes digicoins")
                 bucle3 = False
-        elif opcion_tienda == 2:
+        elif opcion_tienda == "2":
             if jugador1.digicoins >= 3:
                 print("Has comprado una poción Curativa (+10p de vida)")
                 print("")
@@ -664,7 +682,7 @@ def digishop_completo(jugador1,inventario1):
             else:
                 print("No tienes suficientes digicoins")
                 bucle3 = False
-        elif opcion_tienda == 3:
+        elif opcion_tienda == "3":
             if jugador1.digicoins >= 4:
                 print("Has comprado anabolizantes (+5p de ataque)")
                 print("")
@@ -674,7 +692,7 @@ def digishop_completo(jugador1,inventario1):
                 print("No tienes suficientes digicoins")
                 print("")
                 bucle3 = False
-        elif opcion_tienda == 4:
+        elif opcion_tienda == "4":
             bucle3 = False
             time.sleep(0.3)
             
@@ -682,11 +700,14 @@ def digishop_completo(jugador1,inventario1):
             time.sleep(1)
             system("cls")
         else:
-            print("Opción inválida. Intente de nuevo.")
+            print("Opción inválida.")
             print("")
-        
+            continuar = str(input("Pulse intro para volver a intentar. "))
 
-def evolucionar_conchesumare(jugador1,nombre_digipymon):
+def evolucionar_bicho(jugador1,nombre_digipymon):       # Primero consulta si se puede evolucionar. 
+                                                        # Luego llama a la función generar digipymon.
+                                                        # Añade dicho digipymon a la lista de digipymon del jugador 1. 
+                                                        # Asocia el nombre del digipymon a su evolucion respectiva y crea una nueva lista. 
             evolucion = jugador1.consultar_evolucion(nombre_digipymon)
             if evolucion : 
                 evolucionado = generar_digipymon_evo(nombre_digipymon)
@@ -700,7 +721,7 @@ def evolucionar_conchesumare(jugador1,nombre_digipymon):
                 
                 
                 
-def generar_digipymon_evo(nombre_digipymon):
+def generar_digipymon_evo(nombre_digipymon): #genera un digipymon evolucionado
     vida = random.randint(30, 80)
     ataque = random.randint(20,100)
     nivel = random.randint(8,9)
